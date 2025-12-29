@@ -5,18 +5,18 @@ public class Product {
     private int id;
     private String name;
     private double price;
-    private  int quantity;
+    private int quantity;
 
     // Constructor
-    public Product( int id,String name, double price, int quantity) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
+    public Product(int id, String name, double price, int quantity) {
+       setId();
+        setName();
+        setPrice();
+        setQuantity();
     }
 
     // Getters and Setters
-    public  int getId() {
+    public int getId() {
         return id;
     }
 
@@ -48,13 +48,8 @@ public class Product {
         return quantity;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", quantity=" + quantity +
-                '}';
+    public String getDescription() {
+        return "Id: " + id + ", Name: " + name + ", Price: $" + price + ", Quantity: " + quantity;
     }
 }
+
