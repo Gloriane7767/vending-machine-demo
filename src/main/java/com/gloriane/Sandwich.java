@@ -9,6 +9,6 @@ public class Sandwich extends Product{
     }
 
     public String getDescription() {
-        return super.getDescription() + ", Bread Type: " + breadType;
+        return super.toString() + ", Bread Type: " + breadType;
     }
 }

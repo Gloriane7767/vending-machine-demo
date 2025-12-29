@@ -9,6 +9,6 @@ public class DairyDrink  extends Product {
     }
 
     public String getDescription() {
-        return super.getDescription() + ", Fat Content: " + fatContent;
+        return super.toString()+ ", Fat Content: " + fatContent;
     }
 }

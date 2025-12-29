@@ -9,6 +9,6 @@ public class Juice extends Product {
     }
 
     public String getDescription() {
-        return super.getDescription() + ", Fruit Type: " + fruitType;
+        return super.toString() + ", Fruit Type: " + fruitType;
     }
 }

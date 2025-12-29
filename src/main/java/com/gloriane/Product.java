@@ -1,10 +1,10 @@
 package com.gloriane;
 
 // Fields: Represents a product in the vending machine
-public class Product {
-    private int id;
-    private String name;
-    private double price;
+public abstract class Product {
+    private  int id;
+    private  String name;
+    private  double price;
     private int quantity;
 
     // Constructor
@@ -16,16 +16,15 @@ public class Product {
     }
 
     // Getters and Setters
-    // Getters to retrieve product details
-    public int getId() {
+    public static int getId() {
         return id;
     }
 
-    public String getName() {
+    public static String getName() {
         return name;
     }
 
-    public double getPrice() {
+    public static double getPrice() {
         return price;
     }
 
@@ -33,12 +32,13 @@ public class Product {
         return quantity;
     }
 
-    public String getDescription() {
-        return "Id: " + id + ", Name: " + name + ", Price: $" + price + ", Quantity: " + quantity;
+    // Setters to update product details
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    public String getProductName() {
-        return name;
+    // Abstract method: each subclass will define its own description
+    public abstract String getDescription();
     }
-}
+
 

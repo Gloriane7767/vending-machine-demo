@@ -5,7 +5,9 @@ import java.util.Scanner;
 public class ConsoleUI {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        IVendingMachine vm = new IVendingMachine();
+
+        // FIX: use a class that implements the interface
+        IVendingMachine vm = new VendingMachine();
 
         boolean running = true;
 
@@ -23,7 +25,7 @@ public class ConsoleUI {
             switch (choice) {
                 case 1: {
                     System.out.println("Available Products:");
-                    for (String product : vm.getProducts()) {
+                    for (String product : vm.getproductName ()) {
                         System.out.println(product);
                     }
                     break;

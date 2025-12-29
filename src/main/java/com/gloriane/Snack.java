@@ -9,6 +9,6 @@ public class Snack extends Product {
     }
 
    public  String getDescription() {
-       return super.getDescription() + ", Flavor: " + flavor;
+       return super.toString() + ", Flavor: " + flavor;
     }
 }

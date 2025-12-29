@@ -9,6 +9,6 @@ public class Fruit extends Product{
     }
 
    public  String getDescription() {
-       return super.getDescription() + ", Origin: " + origin;
+       return super.toString() + ", Origin: " + origin;
     }
 }

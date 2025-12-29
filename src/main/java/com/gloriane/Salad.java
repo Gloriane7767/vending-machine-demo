@@ -9,6 +9,6 @@ public class Salad extends Product{
     }
 
     public String getDescription() {
-        return super.getDescription() + ", Dressing Type: " + dressingType;
+        return super.toString() + ", Dressing Type: " + dressingType;
     }
 }

@@ -7,8 +7,11 @@ public class Cookie extends Product {
         super(id, name, price, quantity);
         this.isSoft = isSoft;
     }
-    public String getDescription() {
-        return super.getDescription() + ", Is Soft: " + isSoft;
-    }
 
+    @Override
+    public String toString() {
+        return "Cookie{" +
+                "isSoft=" + isSoft +
+                '}';
+    }
 }

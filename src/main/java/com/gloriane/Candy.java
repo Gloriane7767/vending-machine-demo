@@ -9,7 +9,7 @@ public class Candy extends Product {
     }
 
         public  String getDescription() {
-            return super.getDescription() + ", Type: " + type;
+            return super.toString() + ", Type: " + type;
         }
     }
 

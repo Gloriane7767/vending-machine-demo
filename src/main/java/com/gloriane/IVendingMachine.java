@@ -1,6 +1,6 @@
 package com.gloriane;
 
-public class IVendingMachine {
+public  static class IVendingMachine {
 
     // Step 3: Create the Vending Machine class
     int depositPool = 0; // Stores deposited money
@@ -29,64 +29,60 @@ public class IVendingMachine {
         return false; // Return false if money is invalid
     }
 
-    // Method to get current balance
-    public int getBalance() {
+    // Get current balance
+    public double getBalance() {
         return depositPool;
     }
 
-    // Method to buy a product
-    public String request(int productId) {
-        Product product = null;
-        if (productId == Snack.getId()) {
-            product = Snack;
-        } else if (productId == Beverage.getId()) {
-            product = Beverage;
-        } else if (productId == Candy.getId()) {
-            product = Candy;
-        } else if (productId == Cookie.getId()) {
-            product = Cookie;
-        } else if (productId == HotDrink.getId()) {
-            product = HotDrink;
-        } else if (productId == DairyDrink.getId()) {
-            product = DairyDrink;
-        } else if (productId == Sandwich.getId()) {
-            product = Sandwich;
-        } else if (productId == Salad.getId()) {
-            product = Salad;
-        } else if (productId == Juice.getId()) {
-            product = Juice;
-        }
-
-        if (product != null) {
-            if (depositPool >= product.getPrice()) { // Check if enough money is available
-                depositPool -= (int) product.getPrice(); // Deduct price from deposit pool
-                return "Product bought: " + product.getProductName() + "\n" + product.setId();
-            } else {
-                return "Not enough money!";
+    // Find product by ID
+    private Product findProductById(int productId) {
+        for (Product product : products) {
+            if (product.getId() == productId) {
+                return product;
             }
         }
-        return "Product not found!";
+        return null;
+    }
+    // Method to buy a product
+    public String request(int productId) {
+        Product product = findProductById(productId);
+
+        if (product == null){
+                return "Product out of stock!";
+        }
+
+        if (product.getQuantity() <= 0 ) {
+            return "Product out of stock!";
+        }
+
+        if (depositPool < Product.getPrice()) { // Check if enough money is available
+            return "Not enough money!";
+        }
+        depositPool -= (int) Product.getPrice(); // Deduct price from deposit pool
+        product.setQuantity(product.getQuantity()-1); // Decrease product quantity
+        return "Product bought: " + product + Product.getName();
+            }
     }
 
     // Method to return remaining money and reset deposit pool
-    public int endSession() {
-        int moneyChange = depositPool;
+    public double endSession() {
+        int moneyBalance = depositPool;
         depositPool = 0;
-        return moneyChange;
+        return moneyBalance;
     }
 
     // Method to list all available products
     public String[] getProducts() {
-        return new String[]{
-                "ID: " + Snack.getId() + ", Name: " + Snack.getProductName() + ", Price: $" + Snack.getPrice(),
-                "ID: " + Beverage.getId() + ", Name: " + Beverage.getProductName() + ", Price: $" + Beverage.getPrice(),
-                "ID: " + Candy.getId() + ", Name: " + Candy.getProductName() + ", Price: $" + Candy.getPrice(),
-                "ID: " + Cookie.getId() + ", Name: " + Cookie.getProductName() + ", Price: $" + Cookie.getPrice(),
-                "ID: " + HotDrink.getId() + ", Name: " + HotDrink.getProductName() + ", Price: $" + HotDrink.getPrice(),
-                "ID: " + DairyDrink.getId() + ", Name: " + DairyDrink.getProductName() + ", Price: $" + DairyDrink.getPrice(),
-                "ID: " + Sandwich.getId() + ", Name: " + Sandwich.getProductName() + ", Price: $" + Sandwich.getPrice(),
-                "ID: " + Salad.getId() + ", Name: " + Salad.getProductName() + ", Price: $" + Salad.getPrice(),
-                "ID: " + Juice.getId() + ", Name: " + Juice.getProductName() + ", Price: $" + Juice.getPrice()
+        String[] return new String[getProducts().length];
+
+        for(int i = 0; i < products.length; i++) {
+            Product product = products[i];
+            return[i] =
+                "ID: " + product.getId() +
+                        ", Name: " + product.getName() +
+                        ", Price: $" + product.getPrice() +
+                        ", Quantity: " + product.getQuantity()
+
         };
     }
-}
+

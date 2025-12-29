@@ -9,6 +9,6 @@ public class HotDrink  extends Product {
     }
 
     public String getDescription() {
-        return super.getDescription() + ", Has Caffeine: " + hasCaffeine;
+        return super.toString() + ", Has Caffeine: " + hasCaffeine;
     }
 }
