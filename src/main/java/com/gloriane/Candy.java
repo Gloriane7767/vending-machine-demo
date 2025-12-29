@@ -3,7 +3,7 @@ package com.gloriane;
 public class Candy extends Product {
     private String type;
 
-    public Candy(String type, int id, String name, double price, int quantity) {
+    public Candy(int id, String name, double price, int quantity) {
         super(id, name, price, quantity);
         this.type = type;
     }
