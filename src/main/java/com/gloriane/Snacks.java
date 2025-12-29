@@ -1,0 +1,14 @@
+package com.gloriane;
+
+public class Snacks extends Product {
+    private String flavor;
+
+    public Snacks(String flavor, int id, String name, double price, int quantity) {
+        super(id, name, price, quantity);
+        this.flavor = flavor;
+    }
+
+   public  String getDescription() {
+       return super.getDescription() + ", Flavor: " + flavor;
+    }
+}
