@@ -15,16 +15,16 @@ public abstract class Product {
         this.quantity = quantity;
     }
 
-    // Getters and Setters
-    public static int getId() {
+    // Getters and setters (encapsulation)
+    public int getId() {
         return id;
     }
 
-    public static String getName() {
+    public String getName() {
         return name;
     }
 
-    public static double getPrice() {
+    public double getPrice() {
         return price;
     }
 

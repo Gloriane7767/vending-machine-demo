@@ -8,7 +8,8 @@ public class Beverage extends Product {
         this.size = size;
     }
 
-   public  String getDescription() {
-       return super.toString() + ", Size: " + size;
+    @Override
+    public String getDescription() {
+        return super.toString() + ", Size: " + size;
     }
 }
