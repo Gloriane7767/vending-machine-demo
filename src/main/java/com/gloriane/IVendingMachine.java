@@ -1,6 +1,6 @@
 package com.gloriane;
 
-public class VendingMachineImpl {
+public class IVendingMachine {
 
     // Step 3: Create the Vending Machine class
     int depositPool = 0; // Stores deposited money

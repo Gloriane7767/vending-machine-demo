@@ -16,6 +16,7 @@ public class Product {
     }
 
     // Getters and Setters
+    // Getters to retrieve product details
     public int getId() {
         return id;
     }
