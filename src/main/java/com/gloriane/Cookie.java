@@ -8,10 +8,8 @@ public class Cookie extends Product {
         this.isSoft = isSoft;
     }
 
-    @Override
-    public String toString() {
-        return "Cookie{" +
-                "isSoft=" + isSoft +
-                '}';
+    public String getDescription() {
+        String texture = isSoft ? "Soft" : "Crunchy";
+        return super.toString() + ", Texture: " + texture;
     }
 }
