@@ -51,5 +51,9 @@ public class Product {
     public String getDescription() {
         return "Id: " + id + ", Name: " + name + ", Price: $" + price + ", Quantity: " + quantity;
     }
+
+    public String getProductName() {
+        return name;
+    }
 }
 
