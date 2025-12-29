@@ -78,15 +78,15 @@ public class IVendingMachine {
     // Method to list all available products
     public String[] getProducts() {
         return new String[]{
-                Snack.getDescription(),
-                Beverage.getDescription(),
-                Candy.getDescription(),
-                Cookie.getDescription(),
-                HotDrink.getDescription(),
-                DairyDrink.getDescription(),
-                Sandwich.getDescription(),
-                Salad.getDescription(),
-                Juice.getDescription()
+                "ID: " + Snack.getId() + ", Name: " + Snack.getProductName() + ", Price: $" + Snack.getPrice(),
+                "ID: " + Beverage.getId() + ", Name: " + Beverage.getProductName() + ", Price: $" + Beverage.getPrice(),
+                "ID: " + Candy.getId() + ", Name: " + Candy.getProductName() + ", Price: $" + Candy.getPrice(),
+                "ID: " + Cookie.getId() + ", Name: " + Cookie.getProductName() + ", Price: $" + Cookie.getPrice(),
+                "ID: " + HotDrink.getId() + ", Name: " + HotDrink.getProductName() + ", Price: $" + HotDrink.getPrice(),
+                "ID: " + DairyDrink.getId() + ", Name: " + DairyDrink.getProductName() + ", Price: $" + DairyDrink.getPrice(),
+                "ID: " + Sandwich.getId() + ", Name: " + Sandwich.getProductName() + ", Price: $" + Sandwich.getPrice(),
+                "ID: " + Salad.getId() + ", Name: " + Salad.getProductName() + ", Price: $" + Salad.getPrice(),
+                "ID: " + Juice.getId() + ", Name: " + Juice.getProductName() + ", Price: $" + Juice.getPrice()
         };
     }
 }
