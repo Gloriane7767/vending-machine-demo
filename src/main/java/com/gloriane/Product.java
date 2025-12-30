@@ -2,9 +2,9 @@ package com.gloriane;
 
 // Fields: Represents a product in the vending machine
 public abstract class Product {
-    private  int id;
-    private  String name;
-    private  double price;
+    private int id;
+    private String name;
+    private double price;
     private int quantity;
 
     // Constructor
@@ -39,6 +39,11 @@ public abstract class Product {
 
     // Abstract method: each subclass will define its own description
     public abstract String getDescription();
+
+    @Override
+    public String toString() {
+        return "ID: " + id + ", Name: " + name + ", Price: $" + price + ", Quantity: " + quantity;
     }
+}
 
 
