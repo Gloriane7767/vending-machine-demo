@@ -7,7 +7,7 @@ public class VendingMachine {
 
     private double balance = 0; // Stores deposited money
     private final int[] validCoins = {1, 2, 5, 10, 20, 50};
-    private List<Product> products = new ArrayList<>();
+    private final List<Product> products = new ArrayList<>();
 
     public VendingMachine() {
         // Manually defining products

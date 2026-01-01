@@ -38,7 +38,7 @@ public abstract class Product {
     }
 
     // Abstract method: each subclass will define its own description
-    public abstract String getDescription();
+   public abstract String getDescription();
 
     @Override
     public String toString() {
