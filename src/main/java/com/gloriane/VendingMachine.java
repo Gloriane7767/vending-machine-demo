@@ -79,11 +79,10 @@ public class VendingMachine {
         return product;
     }
 
-    public double returnChange() {
+    public void returnChange() {
         double change = balance;
         balance = 0;
         System.out.println("Returning change: $" + change);
-        return change;
     }
 
     public List<Product> getProducts() {
