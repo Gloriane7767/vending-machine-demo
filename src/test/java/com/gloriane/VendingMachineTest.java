@@ -96,7 +96,7 @@ public class VendingMachineTest {
         assertEquals(null, purchasedProduct, "Purchase should fail for out of stock product");
     }
 
-    // Test Case 6 — Return Change Resets Balance
+    // Test Case 4 — Return Change Resets Balance
     @Test
     @DisplayName("Test that returning change resets the balance to zero")
     void testReturnChangeResetsBalance() {
@@ -126,7 +126,7 @@ public class VendingMachineTest {
         assertEquals(1, purchasedProduct.getId(), "Should have purchased product 1");
         assertEquals(0.0, vm.getBalance(), "Balance should be 0.0 after returning change");
     }
-        // Test Case: Get Products Returns All Items
+        // Test Case 5 - Get Products Returns All Items
     @Test
     @DisplayName("Test that getProducts returns all items in the vending machine")
     void testGetProductsReturnsAllItems() {
@@ -141,5 +141,20 @@ public class VendingMachineTest {
         assertEquals(10, productCount, "getProducts should return all items in the vending machine");
     }
 
+     // Test Case 6 - GetProductsContainsCorrectData
+    @Test
+    @DisplayName("Test that getProducts returns items with correct data")
+    void testGetProductsContainsCorrectData() {
+        // 1. Arrange
+        VendingMachine vm = new VendingMachine();
 
+        // 2. Act
+        Product firstProduct = vm.getProducts().get(0);
+
+        // 3. Assert
+        assertEquals(1, firstProduct.getId(), "First product ID should be 1");
+        assertEquals("Cola", firstProduct.getName(), "First product name should be Cola");
+        assertEquals(10.0, firstProduct.getPrice(), "First product price should be 10.0");
+        assertEquals(5, firstProduct.getQuantity(), "First product quantity should be 5");
+    }
 }
