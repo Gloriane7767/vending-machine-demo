@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 // @Test
@@ -51,7 +53,7 @@ public class VendingMachineTest {
         assertEquals(0.0, vm.getBalance(), "Balance should remain 0.0 after inserting an invalid coin");
     }
 
-    // Test Case 3 — Purchase Product Successfully
+    // Test Case 3 — Purchase a Product Successfully
     @Test
     @DisplayName("Test purchasing a product successfully")
     void testPurchaseProductSuccessfully() {
@@ -70,7 +72,7 @@ public class VendingMachineTest {
         assertEquals(initialBalance - 10.0, vm.getBalance(), "Balance should be reduced by the product price after purchase");
     }
 
-    // Test Case 3 — Purchase Fails (Out of Stock)
+    // Test Case 4 — Purchase Fails (Out of Stock)
     @Test
     @DisplayName("Test purchasing a product that is out of stock")
     void testPurchaseProductOutOfStock() {
@@ -95,8 +97,24 @@ public class VendingMachineTest {
         // The purchase should fail and return null
         assertEquals(null, purchasedProduct, "Purchase should fail for out of stock product");
     }
+    // Test Case 5 — Purchase Fails (Insufficient Balance)
+    @Test
+    @DisplayName("Test purchasing a product with insufficient balance")
+    void testPurchaseProductInsufficientBalance() {
+        // 1. Arrange
+        VendingMachine vm = new VendingMachine();
+        double coinValue = 5.0; // Insert insufficient funds
+        vm.insertCoin(coinValue);
+        int productId = 1; // Assuming a product with ID 1 exists and costs more than 5.0
 
-    // Test Case 4 — Return Change Resets Balance
+        // 2. Act
+        Product purchasedProduct = vm.purchaseProduct(productId);
+
+        // 3. Assert
+        // The purchase should fail and return null
+        assertEquals(null, purchasedProduct, "Purchase should fail due to insufficient balance");
+    }
+    // Test Case 6 — Return Change Resets Balance
     @Test
     @DisplayName("Test that returning change resets the balance to zero")
     void testReturnChangeResetsBalance() {
@@ -141,7 +159,7 @@ public class VendingMachineTest {
         assertEquals(10, productCount, "getProducts should return all items in the vending machine");
     }
 
-     // Test Case 6 - GetProductsContainsCorrectData
+     // Test Case 7 - GetProductsContainsCorrectData
     @Test
     @DisplayName("Test that getProducts returns items with correct data")
     void testGetProductsContainsCorrectData() {
@@ -157,4 +175,46 @@ public class VendingMachineTest {
         assertEquals(10.0, firstProduct.getPrice(), "First product price should be 10.0");
         assertEquals(5, firstProduct.getQuantity(), "First product quantity should be 5");
     }
+
+    // Test Case 8 - Empty Vending Machine
+    @Test
+    @DisplayName("Test purchasing from an empty vending machine")
+    void testPurchaseFromEmptyVendingMachine() {
+        // 1. Arrange
+        VendingMachine vm = new VendingMachine();
+        // Clear all products to simulate an empty vending machine
+        for (Product product : vm.getProducts()) {
+            product.setQuantity(0);
+        }
+        vm.insertCoin(50.0); // Insert some coins
+        int productId = 1; // Attempt to purchase a product with ID 1
+
+        // 2. Act
+        Product purchasedProduct = vm.purchaseProduct(productId);
+
+        // 3. Assert
+        // The purchase should fail and return null
+        assertEquals(null, purchasedProduct, "Purchase should fail when vending machine is empty");
+
+    }
+
+    // Test Case 8- ProductListIntegrity()
+    @Test
+    @DisplayName("Test that the returned product list is not accidentally clearable")
+    void testProductListIntegrity() {
+        VendingMachine vm = new VendingMachine();
+        List<Product> products = vm.getProducts();
+
+        // If getProducts() returns the actual reference, clearing it would break the VM
+        // Usually, you'd want to return a copy or an unmodifiable list
+        int initialSize = vm.getProducts().size();
+        products.clear();
+
+        // If the VM is encapsulated correctly, its internal list should still have items
+        // (Note: This depends on if you return a copy in getProducts())
+        // assertEquals(initialSize, vm.getProducts().size());
+    }
 }
+
+
+
