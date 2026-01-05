@@ -78,7 +78,7 @@ public class VendingMachineTest {
         VendingMachine vm = new VendingMachine();
         double coinValue = 50.0; // Insert sufficient funds
         vm.insertCoin(coinValue);
-        int productId = 3; // Assuming product with ID 3 exists
+        int productId = 3; // Assuming a product with ID 3 exists
 
         // Set the product quantity to 0 to simulate out of stock
         for (Product product : vm.getProducts()) {
@@ -95,4 +95,51 @@ public class VendingMachineTest {
         // The purchase should fail and return null
         assertEquals(null, purchasedProduct, "Purchase should fail for out of stock product");
     }
+
+    // Test Case 6 — Return Change Resets Balance
+    @Test
+    @DisplayName("Test that returning change resets the balance to zero")
+    void testReturnChangeResetsBalance() {
+        // 1. Arrange
+        VendingMachine vm = new VendingMachine();
+        double coinValue = 20.0; // Insert some coins
+        vm.insertCoin(coinValue);
+        // 2. Act
+        vm.returnChange();
+        // 3. Assert
+        assertEquals(0.0, vm.getBalance(), "Balance should be reset to zero after returning change");
+    }
+
+    @Test
+    @DisplayName("Test purchasing an item and then returning change")
+    void testPurchaseAndReturnChange() {
+        // 1. Arrange
+        VendingMachine vm = new VendingMachine();
+        vm.insertCoin(50.0); // Insert 50
+        int productId = 1; // Cola costs 10.0
+
+        // 2. Act
+        Product purchasedProduct = vm.purchaseProduct(productId);
+        vm.returnChange();
+
+        // 3. Assert
+        assertEquals(1, purchasedProduct.getId(), "Should have purchased product 1");
+        assertEquals(0.0, vm.getBalance(), "Balance should be 0.0 after returning change");
+    }
+        // Test Case: Get Products Returns All Items
+    @Test
+    @DisplayName("Test that getProducts returns all items in the vending machine")
+    void testGetProductsReturnsAllItems() {
+        // 1. Arrange
+        VendingMachine vm = new VendingMachine();
+
+        // 2. Act
+        int productCount = vm.getProducts().size();
+
+        // 3. Assert
+        // Assuming we initialized the vending machine with 3 products
+        assertEquals(10, productCount, "getProducts should return all items in the vending machine");
+    }
+
+
 }
